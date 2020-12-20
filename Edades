@@ -1,24 +1,86 @@
-num = 0
-suma = 0
-cuenta = 2
-media = 0
-menor = 0
-mayor = 0
-elementos = 3
+# Se Inicializan variables
+Mayor = 0
+Menor = 0
+numEdPares = 0
+numEdImpares = 0
+numPriMayor = 0
 
-num = int(input("Introduzca número: "))
-suma += num
-mayor = menor = num
+# Edades a solicitar
+numEdSolicita = 3
 
-while cuenta <= elementos:
-  num = int(input("Introduzca número: "))
-  if(num > mayor):
-    mayor = num
-  if(num < menor):
-    menor = num
-  suma += num
-  cuenta += 1
-media = suma / elementos
-print("El número mayor es: " + str(mayor))
-print("El número menor es: " + str(menor))
-print("La media es: " + str(media))
+edad = 0
+
+# Función en la que se vera si la edad es un número primo o no
+def esNumPrimo(edad):
+  if(edad == 1):
+    esPrimo = False
+  else:
+    esPrimo = True
+  divisores = edad - 1
+
+  while(divisores > 1):
+
+    if(not(edad % divisores)):
+      esPrimo = False
+      break
+    divisores -= 1
+  return esPrimo
+
+# factorial del número
+def Factorial(numPriMayor):
+  factor = 1
+
+  while(numPriMayor > 0):
+    factor *= numPriMayor
+
+    numPriMayor -= 1
+
+  return factor
+
+# Programa Principal #
+
+edad = int(input("Introducir Edad: "))
+
+edMayor = edMenor = edad
+
+if(edad % 2):
+  numEdImpares += 1
+else:
+  numEdPares +=1
+
+if(esNumPrimo(edad)):
+  if(numPriMayor < edad):
+    numPriMayor = edad
+
+while(numEdSolicita > 1):
+  edad = int(input("Introducir Edad: "))
+
+  if(edad > edMayor):
+    edMayor = edad
+
+  if(edad < edMenor):
+    edMenor = edad
+
+  if(edad % 2):
+    numEdImpares += 1
+  else:
+    numEdPares +=1
+
+  if(esNumPrimo(edad)):
+    if(edad > numPriMayor):
+      numPriMayor = edad
+
+  numEdSolicita -= 1
+
+# Se muestran resultados 
+
+print("Edad Mayor: " + str(edMayor))
+print("Edad Menor: " + str(edMenor))
+print("Numero de Edades Pares: " + str(numEdPares))
+print("Numero de Edades Impares: " + str(numEdImpares))
+
+if(numPriMayor == 0):
+  print("NO has introducido ninguna edad número primo")
+else:
+  print("Edad número Primo Mayor: " + str(numPriMayor))
+  print ("Factorial del Número Primo: " + str(Factorial(numPriMayor)))
