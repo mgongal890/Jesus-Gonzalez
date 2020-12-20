@@ -1,0 +1,24 @@
+num = 0
+suma = 0
+cuenta = 2
+media = 0
+menor = 0
+mayor = 0
+elementos = 3
+
+num = int(input("Introduzca número: "))
+suma += num
+mayor = menor = num
+
+while cuenta <= elementos:
+  num = int(input("Introduzca número: "))
+  if(num > mayor):
+    mayor = num
+  if(num < menor):
+    menor = num
+  suma += num
+  cuenta += 1
+media = suma / elementos
+print("El número mayor es: " + str(mayor))
+print("El número menor es: " + str(menor))
+print("La media es: " + str(media))
